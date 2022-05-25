@@ -1,11 +1,17 @@
 <template>
-  <div class="w-full bg-blue-300 p-4 flex justify-between items-center">
+  <div
+    class="w-full p-4 flex justify-between items-center"
+    :class="{
+      'bg-blue-100 text-blue-400': pageTheme == 'INTERNAL',
+      'bg-blue-400': pageTheme == 'DEFAULT',
+    }"
+  >
     <div>
       <p>Current Balance</p>
       <p class="text-xl font-bold">{{ currencySign }}{{ currentBalance }}</p>
     </div>
 
-    <MonthSelector :hideMonthSelector="hideMonthSelector" />
+    <MonthSelector v-show="showMonthSelector" />
   </div>
 </template>
 
@@ -14,8 +20,14 @@ import Vue from "vue";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
-  props: ["hideMonthSelector"],
+  props: {
+    showMonthSelector: {
+      type: Boolean,
+      default: true,
+    },
+  },
   computed: {
+    ...mapGetters("ui", ["pageTheme"]),
     ...mapGetters("finance", ["currentBalance", "currencySign"]),
   },
 });

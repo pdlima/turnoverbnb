@@ -14,18 +14,15 @@ export const mutations: MutationTree<UiState> = {
 };
 
 export const getters: GetterTree<UiState, RootState> = {
+  pageTheme: (state) => {
+    let pageTheme = "DEFAULT";
+
+    if (state.page !== "index") pageTheme = "INTERNAL";
+
+    return pageTheme;
+  },
   page: (state) => {
-    let pageTitle = "BNB Bank";
-    let headerClasses = "bg-blue-100 uppercase text-blue-400";
-
-    if (state.page == "index") {
-      pageTitle = "BNB Bank";
-      headerClasses = "bg-blue-400";
-    }
-
-    if (state.page == "expenses") pageTitle = "Expenses";
-
-    return { headerClasses, pageTitle };
+    return state.page.charAt(0).toUpperCase() + state.page.slice(1);
   },
 };
 

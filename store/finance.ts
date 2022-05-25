@@ -6,6 +6,7 @@ export const state = () => ({
   incomes: "7100,00",
   expenses: "780,00",
   currencySign: "$",
+  currencyCode: "USD",
   transactions: [
     {
       description: "t-shirt",
@@ -43,6 +44,7 @@ export const getters: GetterTree<FinanceState, RootState> = {
   expenses: (state) => state.expenses,
   currentBalance: (state) => state.currentBalance,
   currencySign: (state) => state.currencySign,
+  currencyCode: (state) => state.currencyCode,
 };
 
 export const actions: ActionTree<FinanceState, RootState> = {};

@@ -1,8 +1,16 @@
 <template>
-  <div class="w-full bg-blue-300 relative p-4" :class="page.headerClasses">
+  <div
+    class="w-full relative p-4"
+    :class="{
+      'bg-blue-100 text-blue-400 uppercase': pageTheme == 'INTERNAL',
+      'bg-blue-400': pageTheme == 'DEFAULT',
+    }"
+  >
     <HBMenu />
 
-    <p class="text-2xl absolute-center" v-html="page.pageTitle"></p>
+    <p class="text-2xl absolute-center">
+      {{ pageTheme == "INTERNAL" ? page : "BNB Bank" }}
+    </p>
   </div>
 </template>
 
@@ -12,7 +20,7 @@ import { mapGetters } from "vuex";
 
 export default Vue.extend({
   computed: {
-    ...mapGetters("ui", ["page"]),
+    ...mapGetters("ui", ["pageTheme", "page"]),
   },
 });
 </script>

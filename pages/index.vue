@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <CurrentBalance />
+    <CurrentBalance class="bg-blue-400" />
     <Incomes />
     <Expenses />
 
