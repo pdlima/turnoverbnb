@@ -3,6 +3,12 @@
     <CurrentBalance />
     <Incomes />
     <Expenses />
+
+    <div class="text-blue-400 p-4">
+      <h1 class="text-xl uppercase">Transactions</h1>
+
+      <Transactions class="mt-8" />
+    </div>
   </div>
 </template>
 
