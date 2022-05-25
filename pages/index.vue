@@ -1,5 +1,7 @@
 <template>
-  <div class=""></div>
+  <div class="w-full">
+    <CurrentBalance />
+  </div>
 </template>
 
 <script lang="ts">
