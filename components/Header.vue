@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full relative p-4"
+    class="w-full p-4"
     :class="{
       'bg-blue-100 text-blue-400 uppercase': pageTheme == 'INTERNAL',
       'bg-blue-400': pageTheme == 'DEFAULT',

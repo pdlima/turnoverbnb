@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full">
+  <div class="w-full min-h-screen pt-16">
     <CurrentBalance class="bg-blue-400" />
     <Incomes />
     <Expenses />
 
-    <div class="text-blue-400 p-4">
-      <h1 class="text-xl uppercase mt-4">Transactions</h1>
+    <div class="p-4 text-blue-400">
+      <h1 class="mt-4 text-xl uppercase">Transactions</h1>
 
       <Transactions class="mt-4" />
     </div>

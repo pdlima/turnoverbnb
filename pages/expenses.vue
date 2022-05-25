@@ -1,13 +1,20 @@
 <template>
-  <div class="w-full">
+  <div class="flex flex-col w-full min-h-screen pt-16">
     <div
-      class="w-full bg-blue-100 p-4 flex justify-between items-center text-blue-400"
+      class="flex items-center justify-between w-full p-4 text-blue-400 bg-blue-100"
     >
       <MonthSelector />
     </div>
 
-    <div class="text-blue-400 p-4">
+    <div class="relative flex flex-col flex-1 h-full p-4 text-blue-400">
       <Transactions transactionType="PURCHASE" class="mt-4" />
+
+      <NuxtLink
+        to="/purchase"
+        class="inline-flex items-center justify-center w-12 h-12 py-2 mt-auto ml-auto text-white bg-blue-400 rounded-full"
+      >
+        <IconPlus />
+      </NuxtLink>
     </div>
   </div>
 </template>

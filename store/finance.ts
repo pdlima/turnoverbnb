@@ -25,7 +25,14 @@ export const state = () => ({
 
 export type FinanceState = ReturnType<typeof state>;
 
-export const mutations: MutationTree<FinanceState> = {};
+export const mutations: MutationTree<FinanceState> = {
+  setFinances(state, payload) {
+    state.currentBalance = payload.currentBalance;
+    state.incomes = payload.incomes;
+    state.expenses = payload.expenses;
+    state.transactions = payload.transactions;
+  },
+};
 
 export const getters: GetterTree<FinanceState, RootState> = {
   transactions: (state) => {
