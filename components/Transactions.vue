@@ -2,7 +2,7 @@
   <ul>
     <li
       class="flex justify-between items-center py-4 border-b border-blue-50"
-      v-for="transaction in transactions"
+      v-for="transaction in filteredTransactions"
       :key="transaction.date"
     >
       <div>
@@ -25,8 +25,16 @@ import Vue from "vue";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
+  props: ["transactionType"],
   computed: {
     ...mapGetters("finance", ["transactions", "currencySign"]),
+    filteredTransactions() {
+      return this.transactions.filter((transaction: any) => {
+        if (!this.transactionType) return true;
+
+        return transaction.type == this.transactionType;
+      });
+    },
   },
 });
 </script>
