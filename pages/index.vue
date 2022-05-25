@@ -1,6 +1,7 @@
 <template>
   <div class="w-full">
     <CurrentBalance />
+    <Incomes />
   </div>
 </template>
 
