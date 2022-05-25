@@ -45,9 +45,9 @@ export default Vue.extend({
   data() {
     return {
       form: {
-        amount: "",
-        date: "",
-        description: "",
+        amount: "" as string,
+        date: "" as string,
+        description: "" as string,
       },
     };
   },

@@ -21,7 +21,7 @@ export default {
   css: ["@/assets/css/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ["@/plugins/vee-validate.ts"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
@@ -44,5 +44,7 @@ export default {
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ["vee-validate/dist/rules"],
+  },
 };

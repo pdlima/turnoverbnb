@@ -41,7 +41,7 @@ export default Vue.extend({
   },
   computed: {
     model: {
-      get() {
+      get(): string {
         return this.value;
       },
       set(value: string) {
