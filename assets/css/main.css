@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  @apply text-white;
+}
+
+@layer components {
+  .absolute-center {
+    @apply absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+  }
+  .absolute-center-x {
+    @apply absolute;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  .absolute-center-y {
+    @apply absolute;
+    transform: translateY(-50%);
+    top: 50%;
+  }
+}
