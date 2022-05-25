@@ -5,7 +5,7 @@
       <p class="text-xl font-bold">{{ currencySign }}{{ currentBalance }}</p>
     </div>
 
-    <MonthSelector />
+    <MonthSelector :hideMonthSelector="hideMonthSelector" />
   </div>
 </template>
 
@@ -14,6 +14,7 @@ import Vue from "vue";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
+  props: ["hideMonthSelector"],
   computed: {
     ...mapGetters("finance", ["currentBalance", "currencySign"]),
   },

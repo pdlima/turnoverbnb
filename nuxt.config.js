@@ -36,6 +36,10 @@ export default {
     "@nuxtjs/tailwindcss",
   ],
 
+  router: {
+    middleware: "pages",
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 

@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col gap-2 w-8 h-8 justify-center" @click="openMenu">
-    <div class="w-full bg-white rounded-sm h-[2px]"></div>
-    <div class="w-full bg-white rounded-sm h-[2px]"></div>
-    <div class="w-full bg-white rounded-sm h-[2px]"></div>
+    <div class="w-full bg-current rounded-sm h-[2px]"></div>
+    <div class="w-full bg-current rounded-sm h-[2px]"></div>
+    <div class="w-full bg-current rounded-sm h-[2px]"></div>
   </div>
 </template>
 
