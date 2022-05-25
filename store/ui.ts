@@ -3,17 +3,21 @@ import { RootState } from "~/store";
 
 export const state = () => ({
   page: "index",
-  menuIsOpen: false,
+  menuIsOpen: true,
 });
 
 export type UiState = ReturnType<typeof state>;
 
 export const mutations: MutationTree<UiState> = {
   setMenu: (state, menuIsOpen: boolean) => (state.menuIsOpen = menuIsOpen),
-  setPage: (state, page: string) => (state.page = page),
+  setPage: (state, page: string) => {
+    state.page = page;
+    state.menuIsOpen = false;
+  },
 };
 
 export const getters: GetterTree<UiState, RootState> = {
+  menuIsOpen: (state) => state.menuIsOpen,
   pageTheme: (state) => {
     let pageTheme = "DEFAULT";
 

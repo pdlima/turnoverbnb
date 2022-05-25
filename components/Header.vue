@@ -8,8 +8,15 @@
   >
     <HBMenu />
 
-    <p class="text-2xl absolute-center">
-      {{ pageTheme == "INTERNAL" ? page : "BNB Bank" }}
+    <NuxtLink
+      to="/"
+      class="text-2xl absolute-center"
+      v-if="pageTheme == 'DEFAULT'"
+      >BNB Bank</NuxtLink
+    >
+
+    <p class="text-2xl absolute-center" v-else>
+      {{ page }}
     </p>
   </div>
 </template>
