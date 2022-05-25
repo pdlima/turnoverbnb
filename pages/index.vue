@@ -5,9 +5,9 @@
     <Expenses />
 
     <div class="text-blue-400 p-4">
-      <h1 class="text-xl uppercase">Transactions</h1>
+      <h1 class="text-xl uppercase mt-4">Transactions</h1>
 
-      <Transactions class="mt-8" />
+      <Transactions class="mt-4" />
     </div>
   </div>
 </template>

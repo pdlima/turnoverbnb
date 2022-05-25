@@ -7,7 +7,7 @@
     >
       <div>
         <p class="font-bold">{{ transaction.description }}</p>
-        <p class="uppercase">{{ transaction.description }}</p>
+        <p class="uppercase">{{ transaction.date }}</p>
       </div>
 
       <div
