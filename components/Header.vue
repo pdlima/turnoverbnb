@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-blue-600 relative p-4">
+  <div class="w-full bg-blue-300 relative p-4">
     <HBMenu />
 
     <p class="text-2xl absolute-center">BNB Bank</p>
