@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full min-h-screen pt-16">
+  <div class="w-full h-screen max-h-[800px] pt-16">
     <CurrentBalance class="bg-blue-400" />
     <Incomes />
     <Expenses />

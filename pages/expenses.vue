@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full min-h-screen pt-16">
+  <div class="flex flex-col w-full h-screen pt-16 max-h-[800px]">
     <div
       class="flex items-center justify-between w-full p-4 text-blue-400 bg-blue-100"
     >

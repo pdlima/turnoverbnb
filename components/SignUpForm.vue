@@ -29,7 +29,7 @@
         </div>
       </validation-provider>
 
-      <validation-provider v-slot="{ errors }" rules="required" name="username">
+      <validation-provider v-slot="{ errors }" rules="required" name="password">
         <input
           type="password"
           class="w-full px-4 py-2 mt-4 text-black border border-blue-500 rounded-full"

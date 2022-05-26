@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 z-20 bg-black bg-opacity-70" v-show="menuIsOpen">
+  <div class="absolute inset-0 z-20 bg-black bg-opacity-70" v-show="menuIsOpen">
     <div class="w-full max-w-[60%] flex flex-col h-full">
       <NuxtLink to="/" class="px-4 py-8 text-2xl bg-blue-200"
         >BNB Bank</NuxtLink

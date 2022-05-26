@@ -19,17 +19,17 @@ export const getters: GetterTree<AuthState, RootState> = {};
 
 export const actions: ActionTree<AuthState, RootState> = {
   signUp({ commit }, payload) {
-    // TODO: validate input and call API
+    // TODO: call API
     const resultFromAPI = {};
 
-    commit("setSignedIn", resultFromAPI);
+    commit("setSignedIn", true);
     this.$router.push({ path: "/" });
   },
   signIn({ commit }, payload) {
-    // TODO: validate input and call API
+    // TODO: call API
     const resultFromAPI = {};
 
-    commit("setSignedIn", resultFromAPI);
+    commit("setSignedIn", true);
     this.$router.push({ path: "/" });
   },
 };

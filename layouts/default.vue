@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative max-w-[375px] mx-auto max-h-[800px] bg-white">
     <Header class="absolute top-0 left-0" />
     <Menu />
 
