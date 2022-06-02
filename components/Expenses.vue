@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full bg-blue-100 p-4 flex justify-between items-center text-blue-500"
+    class="flex items-center justify-between w-full p-4 text-blue-500 bg-blue-100"
   >
     <div>
       <p class="font-bold">Expenses</p>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="max-w-[140px] w-full ml-auto text-center">
-      <ActionButton to="/purchase" label="Purchase" />
+      <ActionButton to="/expenses/purchase" label="Purchase" />
     </div>
   </div>
 </template>

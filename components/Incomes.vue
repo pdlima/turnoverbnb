@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full bg-blue-200 p-4 flex justify-between items-center text-blue-500"
+    class="flex items-center justify-between w-full p-4 text-blue-500 bg-blue-200"
   >
     <div>
       <p class="font-bold">Incomes</p>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="max-w-[140px] w-full ml-auto text-center">
-      <ActionButton to="/deposit" label="Deposit a check" />
+      <ActionButton to="/incomes/deposit" label="Deposit a check" />
     </div>
   </div>
 </template>
