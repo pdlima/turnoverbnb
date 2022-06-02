@@ -5,8 +5,19 @@
         >BNB Bank</NuxtLink
       >
 
-      <ul class="flex-1 p-4 text-white uppercase bg-blue-500">
-        <li>
+      <ul class="flex-1 px-4 text-white uppercase bg-blue-500">
+        <li class="py-4">
+          <NuxtLink class="flex gap-4" to="/"
+            ><IconBalance class="text-blue-100" />
+            <span>Balance</span></NuxtLink
+          >
+        </li>
+        <li class="py-4">
+          <NuxtLink class="flex gap-4" to="/incomes"
+            ><IconIncome class="text-blue-100" /> <span>Incomes</span></NuxtLink
+          >
+        </li>
+        <li class="py-4">
           <NuxtLink class="flex gap-4" to="/expenses"
             ><IconExpense class="text-blue-100" />
             <span>Expenses</span></NuxtLink

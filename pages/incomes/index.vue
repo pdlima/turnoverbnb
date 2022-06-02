@@ -20,7 +20,7 @@
       />
 
       <NuxtLink
-        to="/deposit"
+        to="/income/deposit"
         class="inline-flex items-center justify-center w-12 h-12 py-2 mt-auto ml-auto text-white bg-blue-400 rounded-full"
       >
         <IconPlus />
