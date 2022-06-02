@@ -4,8 +4,7 @@ import { RootState } from "~/store";
 export const state = () => ({
   isSignedIn: false,
   credentials: {
-    username: "",
-    email: "",
+    role: "ADMIN",
   },
 });
 
@@ -13,9 +12,13 @@ export type AuthState = ReturnType<typeof state>;
 
 export const mutations: MutationTree<AuthState> = {
   setSignedIn: (state, isSignedIn: boolean) => (state.isSignedIn = isSignedIn),
+  setCredentials: (state, credentials: any) =>
+    (state.credentials = credentials),
 };
 
-export const getters: GetterTree<AuthState, RootState> = {};
+export const getters: GetterTree<AuthState, RootState> = {
+  credentials: (state) => state.credentials,
+};
 
 export const actions: ActionTree<AuthState, RootState> = {
   signUp({ commit }, payload) {
@@ -23,6 +26,9 @@ export const actions: ActionTree<AuthState, RootState> = {
     const resultFromAPI = {};
 
     commit("setSignedIn", true);
+    commit("setCredentials", {
+      role: "USER",
+    });
     this.$router.push({ path: "/" });
   },
   signIn({ commit }, payload) {
@@ -30,6 +36,7 @@ export const actions: ActionTree<AuthState, RootState> = {
     const resultFromAPI = {};
 
     commit("setSignedIn", true);
+
     this.$router.push({ path: "/" });
   },
 };

@@ -52,7 +52,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      preview: null,
+      preview: null as any,
     };
   },
   methods: {
@@ -67,7 +67,7 @@ export default Vue.extend({
         console.log(file);
 
         reader.onload = (e) => {
-          this.preview = e.target.result;
+          this.preview = e.target?.result;
         };
 
         reader.readAsDataURL(file);

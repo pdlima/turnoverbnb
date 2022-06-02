@@ -9,6 +9,7 @@ export const state = () => ({
   currencyCode: "USD",
   transactions: [
     {
+      id: 1,
       description: "t-shirt",
       type: "PURCHASE",
       date: "08/18/2021, 02:25PM",
@@ -16,6 +17,7 @@ export const state = () => ({
       status: "ACCEPTED",
     },
     {
+      id: 2,
       description: "Freelance work",
       type: "INCOME",
       date: "08/16/2021, 05:43PM",
@@ -23,6 +25,7 @@ export const state = () => ({
       status: "ACCEPTED",
     },
     {
+      id: 3,
       description: "Freelance job",
       type: "INCOME",
       date: "08/16/2021, 05:43PM",
@@ -30,6 +33,7 @@ export const state = () => ({
       status: "REJECTED",
     },
     {
+      id: 4,
       description: "Freelance task",
       type: "INCOME",
       date: "08/16/2021, 05:43PM",

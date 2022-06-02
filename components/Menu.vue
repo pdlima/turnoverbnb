@@ -5,7 +5,10 @@
         >BNB Bank</NuxtLink
       >
 
-      <ul class="flex-1 px-4 text-white uppercase bg-blue-500">
+      <ul
+        class="flex-1 px-4 text-white uppercase bg-blue-500"
+        v-if="credentials.role == 'USER'"
+      >
         <li class="py-4">
           <NuxtLink class="flex gap-4" to="/"
             ><IconBalance class="text-blue-100" />
@@ -24,6 +27,18 @@
           >
         </li>
       </ul>
+
+      <ul
+        class="flex-1 px-4 text-white uppercase bg-blue-500"
+        v-if="credentials.role == 'ADMIN'"
+      >
+        <li class="py-4">
+          <NuxtLink class="flex gap-4" to="/"
+            ><IconCurrency class="text-blue-100" />
+            <span>Checks</span></NuxtLink
+          >
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -35,6 +50,7 @@ import { mapGetters } from "vuex";
 export default Vue.extend({
   computed: {
     ...mapGetters("ui", ["menuIsOpen"]),
+    ...mapGetters("auth", ["credentials"]),
   },
 });
 </script>

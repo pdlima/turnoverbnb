@@ -40,7 +40,7 @@ export default Vue.extend({
     };
   },
   methods: {
-    handleSelect(status: string) {
+    handleSelect(status: any) {
       this.selectedStatus = status;
     },
   },
