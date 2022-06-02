@@ -45,7 +45,22 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth-next"],
+
+  publicRuntimeConfig: {},
+
+  axios: {
+    baseURL: process.env.NUXT_PUBLIC_BACKEND_URL,
+    credentials: true,
+  },
+  auth: {
+    strategies: {
+      laravelSanctum: {
+        provider: "laravel/sanctum",
+        url: process.env.NUXT_PUBLIC_BACKEND_URL,
+      },
+    },
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

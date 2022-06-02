@@ -1,16 +1,15 @@
 import { Middleware } from "@nuxt/types";
 
-const myMiddleware: Middleware = ({ store, route, redirect }) => {
+const myMiddleware: Middleware = ({ store, route, $auth, redirect }) => {
   store.commit("ui/setPage", route.name);
 
-  // if (!store.state.auth.isSignedIn && route.name !== "login")
-  //   redirect("/login");
+  if (!$auth.loggedIn && route.name !== "login") redirect("/login");
 
-  // if (
-  //   store.state.auth.credentials.role == "ADMIN" &&
-  //   route.name?.indexOf("admin") == -1
-  // )
-  //   redirect("/admin");
+  if ($auth.hasScope("admin") && route.name?.indexOf("admin") == -1)
+    redirect("/admin");
+
+  if (!$auth.hasScope("admin") && route.name?.indexOf("admin") !== -1)
+    redirect("/");
 };
 
 export default myMiddleware;

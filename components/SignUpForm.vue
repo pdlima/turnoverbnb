@@ -1,12 +1,12 @@
 <template>
   <div>
     <validation-observer ref="observer" v-slot="{ valid }">
-      <validation-provider v-slot="{ errors }" rules="required" name="username">
+      <validation-provider v-slot="{ errors }" rules="required" name="name">
         <input
           type="text"
           class="w-full px-4 py-2 text-black border border-blue-500 rounded-full"
-          placeholder="username"
-          v-model="form.username"
+          placeholder="name"
+          v-model="form.name"
         />
         <div class="mt-2 text-red-400" v-if="errors.length > 0">
           {{ errors[0] }}
@@ -49,6 +49,10 @@
       >
         Sign Up
       </button>
+
+      <div class="mt-2 text-red-400" v-if="apiError">
+        {{ apiError }}
+      </div>
     </validation-observer>
   </div>
 </template>
@@ -65,17 +69,25 @@ export default Vue.extend({
   data() {
     return {
       form: {
-        username: "" as string,
+        name: "" as string,
         email: "" as string,
         password: "" as string,
       },
     };
   },
+  computed: {
+    apiError() {
+      return this.$store.state.operations.apiError;
+    },
+  },
   methods: {
     async signUp() {
       const isValid = await (this.$refs.observer as any).validate();
 
-      if (isValid) this.$store.dispatch("auth/signUp", this.form);
+      if (!isValid) return;
+
+      this.$store.commit("operations/setApiError", null);
+      this.$store.dispatch("operations/signUp", this.form);
     },
   },
 });
