@@ -13,12 +13,28 @@ export const state = () => ({
       type: "PURCHASE",
       date: "08/18/2021, 02:25PM",
       value: "40",
+      status: "ACCEPTED",
     },
     {
       description: "Freelance work",
       type: "INCOME",
       date: "08/16/2021, 05:43PM",
       value: "3200,00",
+      status: "ACCEPTED",
+    },
+    {
+      description: "Freelance job",
+      type: "INCOME",
+      date: "08/16/2021, 05:43PM",
+      value: "3259,00",
+      status: "REJECTED",
+    },
+    {
+      description: "Freelance task",
+      type: "INCOME",
+      date: "08/16/2021, 05:43PM",
+      value: "2547,00",
+      status: "PENDING",
     },
   ],
 });

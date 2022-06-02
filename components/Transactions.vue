@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li
-      class="flex justify-between items-center py-4 border-b border-blue-50"
+      class="flex items-center justify-between py-4 border-b border-blue-50"
       v-for="transaction in filteredTransactions"
       :key="transaction.date"
     >
@@ -11,7 +11,7 @@
       </div>
 
       <div
-        class="font-bold text-xl"
+        class="text-xl font-bold"
         :class="{ 'text-red-500': transaction.operationSign == '-' }"
       >
         {{ transaction.operationSign }}{{ currencySign }}{{ transaction.value }}
@@ -25,14 +25,19 @@ import Vue from "vue";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
-  props: ["transactionType"],
+  props: ["transactionType", "transactionStatus"],
   computed: {
     ...mapGetters("finance", ["transactions", "currencySign"]),
     filteredTransactions() {
       return this.transactions.filter((transaction: any) => {
         if (!this.transactionType) return true;
 
-        return transaction.type == this.transactionType;
+        const matchByType = transaction.type == this.transactionType;
+        const matchByStatus = transaction.status == this.transactionStatus;
+
+        if (this.transactionStatus) return matchByType && matchByStatus;
+
+        return matchByType;
       });
     },
   },
