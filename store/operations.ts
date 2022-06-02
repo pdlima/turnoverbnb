@@ -16,4 +16,10 @@ export const actions: ActionTree<OperationsState, RootState> = {
 
     commit("finance/setFinances", resultFromAPI, { root: true });
   },
+  depositCheck({ commit }, payload) {
+    // TODO: validate input and call API
+    const resultFromAPI = {};
+
+    commit("finance/setFinances", resultFromAPI, { root: true });
+  },
 };
