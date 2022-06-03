@@ -50,15 +50,10 @@ export default {
   publicRuntimeConfig: {},
 
   axios: {
-    proxy: true,
+    baseURL: process.env.NUXT_PUBLIC_BACKEND_URL,
     credentials: true,
   },
-  proxy: {
-    "/api/": {
-      target: process.env.NUXT_PUBLIC_BACKEND_URL,
-      pathRewrite: { "^/api/": "" },
-    },
-  },
+
   auth: {
     strategies: {
       laravelSanctum: {

@@ -20,7 +20,7 @@ export const actions: ActionTree<OperationsState, RootState> = {
   },
   async signUp({ commit }, payload) {
     try {
-      await this.$axios.get("/api/sanctum/csrf-cookie");
+      await this.$axios.get("/sanctum/csrf-cookie");
       await this.$axios.post("/register", payload);
 
       await this.$auth.setUserToken(true);
