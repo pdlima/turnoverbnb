@@ -2,6 +2,7 @@ import { GetterTree, ActionTree, MutationTree } from "vuex";
 import { RootState } from "~/store";
 
 export const state = () => ({
+  apiError: null as any,
   currencySign: "$",
   currencyCode: "USD",
   transactions: [
@@ -23,8 +24,9 @@ export const state = () => ({
 export type AdminState = ReturnType<typeof state>;
 
 export const mutations: MutationTree<AdminState> = {
+  setApiError: (state, apiError: string) => (state.apiError = apiError),
   setTransactions(state, payload) {
-    state.transactions = payload.transactions;
+    state.transactions = payload;
   },
 };
 
@@ -43,4 +45,40 @@ export const getters: GetterTree<AdminState, RootState> = {
   currencyCode: (state) => state.currencyCode,
 };
 
-export const actions: ActionTree<AdminState, RootState> = {};
+export const actions: ActionTree<AdminState, RootState> = {
+  async updateTransaction({ commit }, payload) {
+    try {
+      await this.$axios.patch(`/api/transactions/${payload.id}`, {
+        status: payload.status,
+      });
+
+      this.$router.push({ path: "/admin" });
+    } catch (error: any) {
+      if (error.response) {
+        commit("setApiError", error.response.data.message);
+      }
+    }
+  },
+  async getTransaction({ commit }, payload) {
+    try {
+      const transaction = await this.$axios.get(`/api/transactions/${payload}`);
+
+      return transaction.data;
+    } catch (error: any) {
+      if (error.response) {
+        commit("setApiError", error.response.data.message);
+      }
+    }
+  },
+  async getTransactions({ commit }) {
+    try {
+      const transactions = await this.$axios.get("/api/transactions");
+
+      commit("setTransactions", transactions.data);
+    } catch (error: any) {
+      if (error.response) {
+        commit("setApiError", error.response.data.message);
+      }
+    }
+  },
+};

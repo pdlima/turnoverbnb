@@ -11,6 +11,9 @@ import Vue from "vue";
 
 export default Vue.extend({
   layout: "admin",
+  async asyncData({ store }) {
+    await store.dispatch("admin/getTransactions");
+  },
 });
 </script>
 

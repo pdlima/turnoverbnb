@@ -1,13 +1,13 @@
 <template>
   <ul>
     <li
-      class="flex items-center justify-between py-4 border-b border-blue-50"
+      class="flex items-center justify-between py-4 border-b cursor-pointer border-blue-50"
       v-for="transaction in filteredTransactions"
       :key="transaction.date"
       @click="goTo(transaction)"
     >
       <div>
-        <p class="font-bold">{{ transaction.customer.name }}</p>
+        <p class="font-bold">{{ transaction.user.name }}</p>
         <p class="uppercase">{{ transaction.date }}</p>
       </div>
 

@@ -7,10 +7,10 @@
     <CustomInput
       rules="required"
       label="Amount"
-      :value="form.amount"
+      :value="form.value"
       :hasCurrencyCode="true"
       placeholder="40,00"
-      @input="updateAmount"
+      @input="updateValue"
     >
       <IconCurrency />
     </CustomInput>
@@ -32,12 +32,16 @@
 
     <CustomUpload
       rules="required"
-      label="Upload check picture"
-      :value="form.picture"
+      label="Upload check image"
+      :value="form.image"
       class="mt-8"
       placeholder="t-shirt"
-      @input="updatePicture"
+      @input="updateImage"
     />
+
+    <div class="mt-2 text-red-400" v-if="apiError">
+      {{ apiError }}
+    </div>
 
     <button
       class="w-full py-2 mt-auto text-white bg-blue-400"
@@ -62,18 +66,18 @@ export default Vue.extend({
   data() {
     return {
       form: {
-        amount: "" as string,
+        value: "" as string,
         description: "" as string,
-        picture: "" as string,
+        image: "" as string,
       },
     };
   },
   methods: {
-    updateAmount(input: string) {
-      this.form.amount = input;
+    updateValue(input: string) {
+      this.form.value = input;
     },
-    updatePicture(input: string) {
-      this.form.picture = input;
+    updateImage(input: string) {
+      this.form.image = input;
     },
     updateDescription(input: string) {
       this.form.description = input;
@@ -82,6 +86,11 @@ export default Vue.extend({
       const isValid = await (this.$refs.observer as any).validate();
 
       if (isValid) this.$store.dispatch("operations/depositCheck", this.form);
+    },
+  },
+  computed: {
+    apiError() {
+      return this.$store.state.operations.apiError;
     },
   },
 });

@@ -64,8 +64,6 @@ export default Vue.extend({
         const reader = new FileReader();
         const file = input.files[0];
 
-        console.log(file);
-
         reader.onload = (e) => {
           this.preview = e.target?.result;
         };

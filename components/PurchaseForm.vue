@@ -7,10 +7,10 @@
     <CustomInput
       rules="required"
       label="Amount"
-      :value="form.amount"
+      :value="form.value"
       :hasCurrencyCode="true"
       placeholder="40,00"
-      @input="updateAmount"
+      @input="updateValue"
     >
       <IconCurrency />
     </CustomInput>
@@ -37,6 +37,10 @@
       <IconStar />
     </CustomInput>
 
+    <div class="mt-2 text-red-400" v-if="apiError">
+      {{ apiError }}
+    </div>
+
     <button
       class="w-full py-2 mt-auto text-white bg-blue-400"
       @click="addPurchase"
@@ -60,15 +64,15 @@ export default Vue.extend({
   data() {
     return {
       form: {
-        amount: "" as string,
+        value: "" as string,
         date: "" as string,
         description: "" as string,
       },
     };
   },
   methods: {
-    updateAmount(input: string) {
-      this.form.amount = input;
+    updateValue(input: string) {
+      this.form.value = input;
     },
     updateDate(input: string) {
       this.form.date = input;
@@ -80,6 +84,11 @@ export default Vue.extend({
       const isValid = await (this.$refs.observer as any).validate();
 
       if (isValid) this.$store.dispatch("operations/addPurchase", this.form);
+    },
+  },
+  computed: {
+    apiError() {
+      return this.$store.state.operations.apiError;
     },
   },
 });

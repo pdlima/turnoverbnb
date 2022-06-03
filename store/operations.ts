@@ -49,16 +49,46 @@ export const actions: ActionTree<OperationsState, RootState> = {
       }
     }
   },
-  addPurchase({ commit }, payload) {
-    // TODO: validate input and call API
-    const resultFromAPI = {};
+  async addPurchase({ commit }, payload) {
+    payload.type = "PURCHASE";
 
-    commit("finance/setFinances", resultFromAPI, { root: true });
+    try {
+      await this.$axios.post("/api/transactions", payload);
+
+      await this.$auth.setUserToken(true);
+
+      commit("finance/setFinances", this.$auth.user, { root: true });
+
+      this.$router.push({ path: "/expenses" });
+    } catch (error: any) {
+      if (error.response) {
+        commit("setApiError", error.response.data.message);
+      }
+    }
   },
-  depositCheck({ commit }, payload) {
-    // TODO: validate input and call API
-    const resultFromAPI = {};
+  async depositCheck({ commit }, payload) {
+    payload.type = "INCOME";
 
-    commit("finance/setFinances", resultFromAPI, { root: true });
+    try {
+      const formData = new FormData();
+
+      Object.keys(payload).forEach((key) => formData.append(key, payload[key]));
+
+      await this.$axios.post("/api/transactions", formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
+
+      await this.$auth.setUserToken(true);
+
+      commit("finance/setFinances", this.$auth.user, { root: true });
+
+      this.$router.push({ path: "/incomes" });
+    } catch (error: any) {
+      if (error.response) {
+        commit("setApiError", error.response.data.message);
+      }
+    }
   },
 };
