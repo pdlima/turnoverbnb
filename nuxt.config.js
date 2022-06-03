@@ -50,8 +50,14 @@ export default {
   publicRuntimeConfig: {},
 
   axios: {
-    baseURL: process.env.NUXT_PUBLIC_BACKEND_URL,
+    proxy: true,
     credentials: true,
+  },
+  proxy: {
+    "/api/": {
+      target: process.env.NUXT_PUBLIC_BACKEND_URL,
+      pathRewrite: { "^/api/": "" },
+    },
   },
   auth: {
     strategies: {
