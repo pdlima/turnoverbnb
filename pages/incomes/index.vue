@@ -34,6 +34,9 @@ import Vue from "vue";
 
 export default Vue.extend({
   layout: "default",
+  async asyncData({ store }) {
+    await store.dispatch("operations/getUser");
+  },
   data() {
     return {
       selectedStatus: null,

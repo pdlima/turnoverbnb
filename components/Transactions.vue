@@ -30,7 +30,11 @@ export default Vue.extend({
     ...mapGetters("finance", ["transactions", "currencySign"]),
     filteredTransactions() {
       return this.transactions.filter((transaction: any) => {
-        if (!this.transactionType) return true;
+        if (!this.transactionType) {
+          if (transaction.status !== "ACCEPTED") return false;
+
+          return true;
+        }
 
         const matchByType = transaction.type == this.transactionType;
         const matchByStatus = transaction.status == this.transactionStatus;

@@ -7,7 +7,7 @@
 
       <ul
         class="flex-1 px-4 text-white uppercase bg-blue-500"
-        v-if="!auth.hasScope('admin')"
+        v-if="user.scope !== 'admin'"
       >
         <li class="py-4">
           <NuxtLink class="flex gap-4" to="/"
@@ -30,7 +30,7 @@
 
       <ul
         class="flex-1 px-4 text-white uppercase bg-blue-500"
-        v-if="auth.hasScope('admin')"
+        v-if="user.scope == 'admin'"
       >
         <li class="py-4">
           <NuxtLink class="flex gap-4" to="/"
@@ -50,8 +50,8 @@ import { mapGetters } from "vuex";
 export default Vue.extend({
   computed: {
     ...mapGetters("ui", ["menuIsOpen"]),
-    auth() {
-      return this.$auth;
+    user() {
+      return this.$auth.user;
     },
   },
 });

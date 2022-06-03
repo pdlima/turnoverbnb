@@ -17,6 +17,8 @@ import Vue from "vue";
 
 export default Vue.extend({
   layout: "default",
-  name: "Home",
+  async asyncData({ store }) {
+    await store.dispatch("operations/getUser");
+  },
 });
 </script>

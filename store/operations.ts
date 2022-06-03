@@ -14,12 +14,20 @@ export const mutations: MutationTree<OperationsState> = {
 export const getters: GetterTree<OperationsState, RootState> = {};
 
 export const actions: ActionTree<OperationsState, RootState> = {
+  async getUser({ commit }) {
+    await this.$auth.setUserToken(true);
+    commit("finance/setFinances", this.$auth.user, { root: true });
+  },
   async signUp({ commit }, payload) {
     try {
       await this.$axios.get("/sanctum/csrf-cookie");
       await this.$axios.post("/register", payload);
 
-      this.$auth.setUserToken(true);
+      await this.$auth.setUserToken(true);
+
+      commit("finance/setFinances", this.$auth.user, { root: true });
+
+      this.$router.push({ path: "/" });
     } catch (error: any) {
       if (error.response) {
         commit("setApiError", error.response.data.message);
@@ -31,6 +39,10 @@ export const actions: ActionTree<OperationsState, RootState> = {
       await this.$auth.loginWith("laravelSanctum", {
         data: payload,
       });
+
+      commit("finance/setFinances", this.$auth.user, { root: true });
+
+      this.$router.push({ path: "/" });
     } catch (error: any) {
       if (error.response) {
         commit("setApiError", error.response.data.message);

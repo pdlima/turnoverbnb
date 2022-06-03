@@ -47,7 +47,7 @@ export type FinanceState = ReturnType<typeof state>;
 
 export const mutations: MutationTree<FinanceState> = {
   setFinances(state, payload) {
-    state.currentBalance = payload.currentBalance;
+    state.currentBalance = payload.balance;
     state.incomes = payload.incomes;
     state.expenses = payload.expenses;
     state.transactions = payload.transactions;
